@@ -314,14 +314,11 @@ quick_check() {
 ## kernel image
 osimg=$(make_print ucoreimg)
 
-## sfs image
-sfsimg=$(make_print sfsimg)
-
 ## swap image
 swapimg=$(make_print swapimg)
 
 ## set default qemu-options
-qemuopts="-hda $osimg -drive file=$swapimg,media=disk,cache=writeback -drive file=$sfsimg,media=disk,cache=writeback"
+qemuopts="-hda $osimg -drive file=$swapimg,media=disk,cache=writeback"
 
 ## set break-function, default is readline
 brkfun=readline
@@ -341,7 +338,7 @@ default_check() {
     'PDE(001) fac00000-fb000000 00400000 -rw'                   \
     '  |-- PTE(000e0) faf00000-fafe0000 000e0000 urw'           \
     '  |-- PTE(00001) fafeb000-fafec000 00001000 -rw'		\
-    'check_slob() succeeded!'					\
+    'check_slab() succeeded!'					\
     'check_vma_struct() succeeded!'                             \
     'page fault at 0x00000100: K/W [no page found].'            \
     'check_pgfault() succeeded!'                                \

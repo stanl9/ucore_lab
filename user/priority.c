@@ -6,6 +6,7 @@
 #define TOTAL 5
 /* to get enough accuracy, MAX_TIME (the running time of each process) should >1000 mseconds. */
 #define MAX_TIME  2000
+#define SLEEP_TIME 400
 unsigned int acc[TOTAL];
 int status[TOTAL];
 int pids[TOTAL];
@@ -24,6 +25,8 @@ spin_delay(void)
 int
 main(void) {
      int i,time;
+     cprintf("priority process will sleep %d ticks\n",SLEEP_TIME);
+     sleep(SLEEP_TIME);
      memset(pids, 0, sizeof(pids));
      lab6_set_priority(TOTAL + 1);
 
