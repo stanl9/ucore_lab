@@ -130,7 +130,7 @@ swap_in(struct mm_struct *mm, uintptr_t addr, struct Page **ptr_result)
      int r;
      if ((r = swapfs_read((*ptep), result)) != 0)
      {
-        panic("swap_in: swapfs_read failed %d\n", r);
+        assert(r!=0);
      }
      cprintf("swap_in: load disk swap entry %d with swap_page in vadr 0x%x\n", (*ptep)>>8, addr);
      *ptr_result=result;
